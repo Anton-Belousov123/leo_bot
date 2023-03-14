@@ -3,7 +3,7 @@ from sqlalchemy.orm import declarative_base
 
 from misc import secrets
 
-pg_secrets = secrets.SecretInfo.POSTGRES
+pg_secrets = secrets.secret_info.POSTGRES
 engine = create_engine(f'postgresql://{pg_secrets.USERNAME}'
                        f':{pg_secrets.PASSWORD}'
                        f'@{pg_secrets.HOSTNAME}'
