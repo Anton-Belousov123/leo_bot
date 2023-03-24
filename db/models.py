@@ -16,6 +16,12 @@ class Transactions(Base):
     provider_id = Column(BigInteger)
     provider_photo = Column(String)
     admin_photo = Column(String)
+    chat_id = Column(BigInteger)
+    reply_to_message_id = Column(BigInteger)
+    provider_api_id = Column(BigInteger)
+    crypto_wallet_number = Column(String)
+    status_api = Column(String)
+    sum_api = Column(Float)
 
 
 Base.metadata.create_all(engine)

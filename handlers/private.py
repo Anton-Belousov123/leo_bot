@@ -13,7 +13,8 @@ def get_sent_keyboard(index: int):
 
 
 async def send_receipt_here(user_id, index):
-    await bot.send_message(user_id, messages.SEND_HERE, reply_markup=get_sent_keyboard(index))
+    print(user_id, index)
+    await bot.send_message(user_id, actions.get_obj_by_id_to_private(index), reply_markup=get_sent_keyboard(index))
 
 
 @dp.callback_query_handler(lambda d: 'sent' in d.data)

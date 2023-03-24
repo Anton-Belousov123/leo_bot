@@ -1,6 +1,13 @@
 import dataclasses
+import enum
+
 import dotenv
 import os
+
+
+class LoggingMode(enum.Enum):
+    CONSOLE = 'CONSOLE'
+    FILE = 'FILE'
 
 
 @dataclasses.dataclass
@@ -16,6 +23,7 @@ class PgConnection:
 class SecretInfo:
     TELEGRAM_API_TOKEN: str
     POSTGRES: PgConnection
+    LOGGING_MODE: LoggingMode
 
 
 def load_secrets() -> SecretInfo:
@@ -27,7 +35,8 @@ def load_secrets() -> SecretInfo:
                           HOSTNAME=os.getenv("HOSTNAME"),
                           PORT=os.getenv('PORT'),
                           DATABASE=os.getenv('DATABASE')
-                      ))
+                      ),
+                      LOGGING_MODE=LoggingMode(os.getenv('LOGGING_MODE')))
 
 
 secret_info = load_secrets()

@@ -1,5 +1,5 @@
 from sqlalchemy import create_engine
-from sqlalchemy.orm import declarative_base
+from sqlalchemy.orm import declarative_base, sessionmaker
 
 from misc import secrets
 
@@ -10,3 +10,5 @@ engine = create_engine(f'postgresql://{pg_secrets.USERNAME}'
                        f':{pg_secrets.PORT}'
                        f'/{pg_secrets.DATABASE}')
 Base = declarative_base()
+SessionMaker = sessionmaker(bind=engine)
+session = SessionMaker()
