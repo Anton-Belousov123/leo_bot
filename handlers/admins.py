@@ -50,4 +50,3 @@ async def photo_handler(message):
     await message.photo[-1].download(filename)
     actions.update_admin_photo(message.message_thread_id, filename)
 
-# I love govno code because i fuck this job.
